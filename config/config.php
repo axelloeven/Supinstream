@@ -1,21 +1,18 @@
 <?php
 
-$host = getenv('CLEVER_MYSQL_HOST');
-$user = getenv('CLEVER_MYSQL_USER');
-$password = getenv('CLEVER_MYSQL_PASSWORD');
-$dbname = getenv('CLEVER_MYSQL_DB');
+$host= 'bxybxv53xgcywm2kr2yw-mysql.services.clever-cloud.com';
+$username = 'usvcm9lpxtjc5edv';
+$password = 'iD5keffJbUC3KCnDdL2i';
+$dbname= 'bxybxv53xgcywm2kr2yw';
 
-
-if (!$host || !$user || !$password || !$dbname) {
-    die("Les variables d'environnement pour la base de données ne sont pas définies.");
+if (!$host || !$username || !$password || !$dbname) {
+    die('Database credentials are not set in the environment variables.');
 }
-
-
-$conn = new mysqli($host, $user, $password, $dbname);
-
-if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
+try {
+    $conn = new PDO("mysql:host=$host;dbname=$dbname", $username, $password);
+    $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+} catch (PDOException $e) {
+    die("Connection failed: " . $e->getMessage());
 }
-
-$conn->set_charset("utf8mb4");
 ?>
+
