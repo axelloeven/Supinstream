@@ -1,7 +1,7 @@
 <?php
 require 'config/config.php';
 require 'config/get_movies.php';
-$movies = getMoviesFromDatabase($conn, 4);
+$movies = getMoviesFromDatabase($conn, 5);
 ?>
 
 <!DOCTYPE html>
@@ -49,25 +49,39 @@ $movies = getMoviesFromDatabase($conn, 4);
 <div class="Featured movies">
     <h2>Les films à ne pas manquer</h2>
     <div class="movies-list">
-        <div class="movie-item">
+        <div class="movie-item"><a href="movie.php?id=<?php echo $movies[0]['movie_id']; ?>">
             <img src="<?php echo $movies[0]['image_path']; ?>" alt="<?php echo $movies[0]['title']; ?>">
-            <h3><?php echo htmlspecialchars($movies['title']); ?></h3>
+            <h3><?php echo htmlspecialchars($movies[0]['title']); ?></h3>
             <p><?php echo htmlspecialchars($movies[0]['release_year']); ?></p>
+            </a>
         </div>
-        <div class="movie-item">
-            <img src="<?php echo $movies[1]['image_path']; ?>" alt="<?php echo $movies[1]['title']; ?>">
-            <h3><?php echo htmlspecialchars($movies['title']); ?></h3>
-            <p><?php echo htmlspecialchars($movies[1]['release_year']); ?></p>
-        </div>
-        <div class="movie-item">
+        <div class="movie-item"><a href="movie.php?id=<?php echo $movies[2]['movie_id']; ?>">
             <img src="<?php echo $movies[2]['image_path']; ?>" alt="<?php echo $movies[2]['title']; ?>">
-            <h3><?php echo htmlspecialchars($movies['title']); ?></h3>
+            <h3><?php echo htmlspecialchars($movies[2]['title']); ?></h3>
             <p><?php echo htmlspecialchars($movies[2]['release_year']); ?></p>
+            </a>
         </div>
-        <div class="movie-item">
+        <div class="movie-item"><a href="movie.php?id=<?php echo $movies[3]['movie_id']; ?>">
             <img src="<?php echo $movies[3]['image_path']; ?>" alt="<?php echo $movies[3]['title']; ?>">
-            <h3><?php echo htmlspecialchars($movies['title']); ?></h3>
+            <h3><?php echo htmlspecialchars($movies[3]['title']); ?></h3>
             <p><?php echo htmlspecialchars($movies[3]['release_year']); ?></p>
+            </a>
         </div>
-
-
+        <div class="movie-item"><a href="movie.php?id=<?php echo $movies[4]['movie_id']; ?>">
+            <img src="<?php echo $movies[4]['image_path']; ?>" alt="<?php echo $movies[4]['title']; ?>">
+            <h3><?php echo htmlspecialchars($movies[4]['title']); ?></h3>
+            <p><?php echo htmlspecialchars($movies[4]['release_year']); ?></p>
+            </a>
+        </div>
+    </div>
+</div>
+<div class="footer">
+    <p>&copy; 2023 Supinstream. Tous droits réservés.</p>
+    <div class="social-media">
+        <a href="#"><img src="facebook.png" alt="Facebook"></a>
+        <a href="#"><img src="twitter.png" alt="Twitter"></a>
+        <a href="#"><img src="instagram.png" alt="Instagram"></a>
+    </div>
+</div>
+</body>
+</html>
