@@ -104,3 +104,4 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 </body>
 <footer>
     <p>&copy; 2023 Supinstream. Tous droits réservés.</p>
+</footer>

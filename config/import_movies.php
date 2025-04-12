@@ -18,7 +18,8 @@ $imdb_ids = [
 
 echo "Connexion à la base de données réussie!\n";
 
-function getMovieData($imdb_id, $api_key) {
+function getMovieData($imdb_id, $api_key)
+{
     $url = "http://www.omdbapi.com/?i=$imdb_id&apikey=$api_key&plot=full";
     $response = file_get_contents($url);
 
@@ -37,7 +38,8 @@ function getMovieData($imdb_id, $api_key) {
     return $data;
 }
 
-function insertDirector($conn, $director_name) {
+function insertDirector($conn, $director_name)
+{
     $name_parts = explode(' ', $director_name, 2);
     $first_name = $name_parts[0];
     $last_name = isset($name_parts[1]) ? $name_parts[1] : '';
@@ -56,7 +58,8 @@ function insertDirector($conn, $director_name) {
     return $conn->lastInsertId();
 }
 
-function insertActor($conn, $actor_name) {
+function insertActor($conn, $actor_name)
+{
     $name_parts = explode(' ', $actor_name, 2);
     $first_name = $name_parts[0];
     $last_name = isset($name_parts[1]) ? $name_parts[1] : '';
@@ -75,7 +78,8 @@ function insertActor($conn, $actor_name) {
     return $conn->lastInsertId();
 }
 
-function insertType($conn, $type_name) {
+function insertType($conn, $type_name)
+{
     $stmt = $conn->prepare("SELECT type_id FROM type WHERE type_name = ?");
     $stmt->execute([$type_name]);
     $result = $stmt->fetch(PDO::FETCH_ASSOC);
@@ -90,7 +94,8 @@ function insertType($conn, $type_name) {
     return $conn->lastInsertId();
 }
 
-function importMovie($conn, $movie_data) {
+function importMovie($conn, $movie_data)
+{
     $conn->beginTransaction();
 
     try {

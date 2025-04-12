@@ -1,9 +1,9 @@
 <?php
 
-$host= 'bxybxv53xgcywm2kr2yw-mysql.services.clever-cloud.com';
+$host = 'bxybxv53xgcywm2kr2yw-mysql.services.clever-cloud.com';
 $username = 'usvcm9lpxtjc5edv';
 $password = 'iD5keffJbUC3KCnDdL2i';
-$dbname= 'bxybxv53xgcywm2kr2yw';
+$dbname = 'bxybxv53xgcywm2kr2yw';
 
 if (!$host || !$username || !$password || !$dbname) {
     die('Database credentials are not set in the environment variables.');
@@ -15,4 +15,3 @@ try {
     die("Connection failed: " . $e->getMessage());
 }
 ?>
-

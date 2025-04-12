@@ -161,6 +161,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 </main>
 </body>
 <footer>
-    <p>&copy; 2023 Supinstream. Tous droits réservés.</p>
+    <p>2025 - Supinstream</p>
 </footer>
 </html>
