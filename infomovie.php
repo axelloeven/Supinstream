@@ -49,7 +49,11 @@ if (isset($_GET['id'])) {
         <a href="cart.php"><img src="cart.png" alt="Image cart"> </a>
     </div>
     <div class="user">
-        <a href="connexion.php"><img src="user.png" alt="Image user"> </a>
+        <?php if (isset($_SESSION['user_id'])): ?>
+            <a href="account.php"><img src="user.png" alt="Image user"> </a>
+        <?php else: ?>
+            <a href="connexion.php"><img src="user.png" alt="Image user"> </a>
+        <?php endif; ?>
     </div>
 </header>
     <div class="movietitle">
