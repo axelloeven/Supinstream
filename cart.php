@@ -13,7 +13,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         switch ($_POST['action']) {
             case 'update':
                 if (isset($_POST['cart_id']) && isset($_POST['quantity'])) {
-                    updateCart(($conn $_POST['cart_id']) and $_POST['quantity']);
+                    updateCart($conn, $_POST['cart_id'], $_POST['quantity']);
                 }
                 break;
             case 'remove':
@@ -29,8 +29,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 }
 
-$cartItems = getCartItems($conn);
-$cartTotal = getTotalPrice($cartItems);
+$cartItems = getCartItems($conn, $conn);
+$cartTotal = getTotalPrice($cartItems, $conn);
 ?>
 
 <!DOCTYPE html>

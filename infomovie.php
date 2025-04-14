@@ -1,38 +1,4 @@
 <?php
-require 'config/config.php';
-require 'cart_functions.php';
-
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    if (isset($_POST['movie_id']) && isset($_POST['quantity'])) {
-        $movie_id = $_POST['movie_id'];
-        $quantity = (int)$_POST['quantity'];
-
-        
-        if ($quantity < 1) {
-            $quantity = 1;
-        }
-
-        $result = addToCart($conn, $movie_id, $quantity);
-
-        if ($result['success']) {
-            header('Location: cart.php?status=added');
-            exit();
-        } else {
-            header('Location: infomovie.php?id=' . $movie_id . '&error=' . urlencode($result['message']));
-            exit();
-        }
-    } else {
-        header('Location: index.php');
-        exit();
-    }
-} else {
-    header('Location: index.php');
-    exit();
-}
-?>
-
-
-<?php
 require "config/config.php";
 
 function getMovieDetails($conn, $movieID) {
@@ -91,6 +57,12 @@ if (isset($_GET['id'])) {
     <img src="<?php echo htmlspecialchars($movie['image_path']); ?>" alt="<?php echo htmlspecialchars($movie['title']); ?>">
     <p><strong>Année de sortie:</strong> <?php echo htmlspecialchars($movie['release_year']); ?></p>
     <p><strong>Genre:</strong> <?php echo htmlspecialchars($movie['genre']); ?></p>
+</div>
+<div class="addtocart">
+    <form method="post" action="addtocart.php">
+        <input type="hidden" name="id" value="<?php echo $movie['movie_id']; ?>">
+        <button type="submit">Add to cart</button>
+    </form>
 </div>
 </main>
 <footer><p>2025 - Supinstream</p></footer>

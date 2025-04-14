@@ -57,9 +57,9 @@ function getCartItems($conn, $movie_id) {
     return $stmt->fetch_all(MYSQLI_ASSOC);
 }
 
-function getTotalPrice($conn, $movie_id) {
+function getTotalPrice($cartItem) {
     $total = 0;
-    foreach ($cartItems as $item) {
+    foreach ($cartItem as $item) {
         $total += $item['quantity'] * $item['price'];
     }
     return $total;
