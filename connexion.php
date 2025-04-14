@@ -1,5 +1,7 @@
 <?php
-session_start();
+if (session_status() == PHP_SESSION_NONE) {
+    session_start();
+}
 require_once 'config/config.php';
 
 if (isset($_SESSION['user_id'])) {
@@ -7,7 +9,7 @@ if (isset($_SESSION['user_id'])) {
     exit();
 }
 
-$error = '';
+$error = ' ';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if (isset($_POST['email']) && isset($_POST['password'])) {
@@ -23,7 +25,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $user = $stmt->fetch(PDO::FETCH_ASSOC);
 
             if ($user && password_verify($password, $user['password'])) {
-                $_SESSION['id'] = $user['id'];
+                $_SESSION['user_id'] = $user['ID'];
                 $_SESSION['username'] = $user['username'];
                 $_SESSION['email'] = $user['email'];
                 header('Location: index.php');

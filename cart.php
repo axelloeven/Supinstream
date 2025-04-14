@@ -1,9 +1,11 @@
 <?php
-session_start();
+if (session_status() == PHP_SESSION_NONE) {
+    session_start();
+}
 require 'config/config.php';
 require 'cartfunction.php';
 
-if (isset($_SESSION['user_id'])) {
+if (!isset($_SESSION['user_id'])) {
     header('location: connexion.php?redirect=cart.php');
     exit();
 }
@@ -17,7 +19,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 }
                 break;
             case 'remove':
-                if (isset($_POST[cart_id])) {
+                if (isset($_POST['cart_id'])) {
                     removeFromCart($conn, $_POST['cart_id']);
                 }
                 break;
@@ -80,13 +82,13 @@ $cartTotal = getTotalPrice($cartItems, $conn);
         <div class="products">
             <?php foreach ($cartItems as $item): ?>
             <div class="item">
-                <img src="<?php echo htmlspecialchars($item['image'])?>" alt="Image cart">
+                <img src="<?php echo htmlspecialchars($item['image_path'])?>" alt="Image cart">
                 <h3><?php echo htmlspecialchars($item['title']); ?></h3>
                 <p><?php echo htmlspecialchars($item['price']); ?></p>
             </div>
             <form method="post" class="remove-from-cart">
                 <input type="hidden" name="action" value="remove">
-                <input type="hidden" name="cart_id" value="<?php echo ($item['cart_id']); ?>"
+                <input type="hidden" name="cart_id" value="<?php echo $item['cart_id']; ?>">
                 <button type="submit" class="remove-from-cart">Remove</button>
             </form>
         </div>

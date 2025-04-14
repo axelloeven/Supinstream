@@ -1,4 +1,7 @@
 <?php
+if (session_status() == PHP_SESSION_NONE) {
+    session_start();
+}
 require "config/config.php";
 
 function getMovieDetails($conn, $movieID) {
@@ -60,7 +63,8 @@ if (isset($_GET['id'])) {
 </div>
 <div class="addtocart">
     <form method="post" action="addtocart.php">
-        <input type="hidden" name="id" value="<?php echo $movie['movie_id']; ?>">
+        <input type="hidden" name="movie_id" value="<?php echo $movie['movie_id']; ?>">
+        <input type="hidden" name="quantity" value="1">
         <button type="submit">Add to cart</button>
     </form>
 </div>
