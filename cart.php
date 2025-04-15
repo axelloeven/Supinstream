@@ -41,39 +41,12 @@ $cartTotal = getTotalPrice($cartItems, $conn);
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>supinstream</title>
+    <link href="src/output.css" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
-    <script src="script.js" defer></script>
+    <script src="src/script.js" defer></script>
 </head>
 
-<header>
-    <div class="logo">
-        <img src="images/logo.png" alt="Logo Supinstream">
-        <h1>supinstream</h1>
-    </div>
-    <div class="menu">
-        <nav>
-            <ul>
-                <li><a href="index.php">Accueil</a></li>
-                <li><a href="movies.php">Films</a></li>
-                <li><a href="categories.php">Categories</a></li>
-                <div class="searchbar">
-                    <input type="text" placeholder="Search...">
-                    <button type="submit">Search</button>
-                </div>
-            </ul>
-        </nav>
-    </div>
-    <div class="cart">
-        <a href="cart.php"><img src="cart.png" alt="Image cart"> </a>
-    </div>
-    <div class="user">
-        <?php if (isset($_SESSION['user_id'])): ?>
-            <a href="account.php"><img src="user.png" alt="Image user"> </a>
-        <?php else: ?>
-            <a href="connexion.php"><img src="user.png" alt="Image user"> </a>
-        <?php endif; ?>
-    </div>
-</header>
+<?php require_once('header.php'); ?>
 <main>
     <body>
     <h1>Votre panier</h1>
