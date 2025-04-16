@@ -32,8 +32,8 @@
         </div>
 
         <div class="hidden lg:flex lg:flex-1 lg:justify-center mx-4">
-            <form class="flex w-full max-w-md">
-                <input type="text" placeholder="Search..." class="w-full rounded-l-md text-[#9E9E9D] shadow-sm focus:border-indigo-500 focus:ring-indigo-500">
+            <form method="GET" action="search.php" class="flex w-full max-w-md">
+                <input type="text" name="query" placeholder="Search..." class="w-full rounded-l-md text-[#9E9E9D] shadow-sm focus:border-indigo-500 focus:ring-indigo-500">
                 <button type="submit" class="rounded-r-md border border-l-0 border-indigo-600 bg-indigo-600 px-4 text-sm font-semibold text-white hover:bg-indigo-700">
                     Search
                 </button>

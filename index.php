@@ -20,12 +20,12 @@ $movies = getMoviesFromDatabase($conn, 5);
 
 <?php require_once('header.php'); ?>
 <body>
-<div class="landing texrt bg-[#181A1B]">
+<div class="landing texrt bg-black">
     <div class="flex justify-center items-center w-full py-12">
         <h1 class="text-7xl font-bold text-center text-[#E8E6E3]">Bienvenue sur Supinstream</h1>
     </div>
 </div>
-<section class="bg-[#181A1B]">
+<section class="bg-black">
     <div class="mx-auto max-w-2xl px-4 py-16 sm:px-6 sm:py-24 lg:max-w-7xl lg:px-8">
         <h2 class="text-2xl font-bold tracking-tight text-[#E8E6E3]">Les films à ne pas manquer</h2>
 
