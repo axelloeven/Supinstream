@@ -48,7 +48,6 @@ try {
         </div>
 
         <div class="md:flex">
-            <!-- Sidebar -->
             <div class="md:w-1/4 bg-gray-800 p-6">
                 <div class="user-info mb-6">
                     <p class="mb-2"><span class="font-bold text-violet-300">Nom d'utilisateur:</span> <?= htmlspecialchars($user['username'] ?? '') ?></p>
@@ -69,8 +68,6 @@ try {
                     </ul>
                 </div>
             </div>
-
-            <!-- Main Content -->
             <div class="md:w-3/4 p-6">
                 <section id="films" class="user-movies">
                     <h2 class="text-xl font-bold mb-6 text-violet-400">Mes Films</h2>

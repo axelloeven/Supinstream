@@ -27,7 +27,7 @@
 
         <div class="hidden lg:flex lg:gap-x-8">
             <a href="index.php" class="text-sm font-semibold text-white hover:text-indigo-600">Accueil</a>
-            <a href="movies.php" class="text-sm font-semibold text-white hover:text-indigo-600">Films</a>
+            <a href="movei.php" class="text-sm font-semibold text-white hover:text-indigo-600">Films</a>
             <a href="categories.php" class="text-sm font-semibold text-white hover:text-indigo-600">Categories</a>
         </div>
 
