@@ -156,8 +156,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     </div>
 </div>
 
-<footer class="bg-gray-900 text-center py-4 text-gray-400">
-    <p>&copy; 2025 Supinstream. Tous droits réservés.</p>
-</footer>
+<?php require_once('footer.php'); ?>
 </body>
 </html>
