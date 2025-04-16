@@ -21,7 +21,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             header('Location: cart.php?status=added');
             exit();
         } else {
-            header('Location: infomovie.php?id=' . $movie_id . '&error=' . urlencode($result['message']));
+            header('Location: connexion.php?id=' . $movie_id . '&error=' . urlencode($result['message']));
             exit();
         }
     } else {

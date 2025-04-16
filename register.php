@@ -73,71 +73,91 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>supinstream</title>
+    <title>Inscription - Supinstream</title>
     <link href="src/output.css" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
     <script src="src/script.js" defer></script>
 </head>
-
+<body class="bg-black text-white flex flex-col min-h-screen">
 <?php require_once('header.php'); ?>
-<body>
-<main class="container">
-    <section class="register-form">
-        <h1>Créer un compte</h1>
 
-        <?php if ($error): ?>
-            <div class="error-message"><?= htmlspecialchars($error) ?></div>
-        <?php endif; ?>
+<div class="flex-grow flex items-center justify-center px-6 py-12">
+    <div class="bg-gray-900 rounded-lg shadow-xl w-full max-w-md overflow-hidden">
+        <div class="bg-violet-600 py-4">
+            <h1 class="text-2xl font-bold text-center text-white">Créer un compte</h1>
+        </div>
 
-        <?php if ($success): ?>
-            <div class="success-message">
-                <?= htmlspecialchars($success) ?>
-                <p><a href="login.php">Se connecter</a></p>
-            </div>
-        <?php else: ?>
-            <form method="POST" action="register.php">
-                <div class="form-group">
-                    <label for="username">Nom d'utilisateur*</label>
-                    <input type="text" id="username" name="username" required>
+        <div class="p-8">
+            <?php if ($error): ?>
+                <div class="bg-red-500 bg-opacity-20 border border-red-500 text-red-300 px-4 py-3 rounded mb-6">
+                    <?= htmlspecialchars($error) ?>
                 </div>
+            <?php endif; ?>
 
-                <div class="form-group">
-                    <label for="email">Email*</label>
-                    <input type="email" id="email" name="email" required>
+            <?php if ($success): ?>
+                <div class="bg-green-500 bg-opacity-20 border border-green-500 text-green-300 px-4 py-3 rounded mb-6">
+                    <?= htmlspecialchars($success) ?>
+                    <p class="mt-2"><a href="connexion.php" class="text-green-200 underline">Se connecter</a></p>
                 </div>
-
-                <div class="form-row">
-                    <div class="form-group">
-                        <label for="first_name">Prénom</label>
-                        <input type="text" id="first_name" name="first_name">
+            <?php else: ?>
+                <form method="POST" action="register.php" class="space-y-4">
+                    <div>
+                        <label for="username" class="block text-violet-300 mb-2 font-medium">Nom d'utilisateur*</label>
+                        <input type="text" id="username" name="username" required
+                               class="w-full px-4 py-3 bg-gray-800 border border-gray-700 rounded-md focus:outline-none focus:ring-2 focus:ring-violet-500 text-white">
                     </div>
 
-                    <div class="form-group">
-                        <label for="last_name">Nom</label>
-                        <input type="text" id="last_name" name="last_name">
+                    <div>
+                        <label for="email" class="block text-violet-300 mb-2 font-medium">Email*</label>
+                        <input type="email" id="email" name="email" required
+                               class="w-full px-4 py-3 bg-gray-800 border border-gray-700 rounded-md focus:outline-none focus:ring-2 focus:ring-violet-500 text-white">
                     </div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div>
+                            <label for="firstname" class="block text-violet-300 mb-2 font-medium">Prénom</label>
+                            <input type="text" id="firstname" name="firstname"
+                                   class="w-full px-4 py-3 bg-gray-800 border border-gray-700 rounded-md focus:outline-none focus:ring-2 focus:ring-violet-500 text-white">
+                        </div>
+
+                        <div>
+                            <label for="lastname" class="block text-violet-300 mb-2 font-medium">Nom</label>
+                            <input type="text" id="lastname" name="lastname"
+                                   class="w-full px-4 py-3 bg-gray-800 border border-gray-700 rounded-md focus:outline-none focus:ring-2 focus:ring-violet-500 text-white">
+                        </div>
+                    </div>
+
+                    <div>
+                        <label for="password" class="block text-violet-300 mb-2 font-medium">Mot de passe*</label>
+                        <input type="password" id="password" name="password" required
+                               class="w-full px-4 py-3 bg-gray-800 border border-gray-700 rounded-md focus:outline-none focus:ring-2 focus:ring-violet-500 text-white">
+                        <small class="text-gray-400 mt-1 block">Au moins 6 caractères</small>
+                    </div>
+
+                    <div>
+                        <label for="confirm_password" class="block text-violet-300 mb-2 font-medium">Confirmer le mot de passe*</label>
+                        <input type="password" id="confirm_password" name="confirm_password" required
+                               class="w-full px-4 py-3 bg-gray-800 border border-gray-700 rounded-md focus:outline-none focus:ring-2 focus:ring-violet-500 text-white">
+                    </div>
+
+                    <button type="submit"
+                            class="w-full bg-violet-500 text-white py-3 px-4 rounded-md hover:bg-violet-600 focus:outline-none focus:ring-2 focus:ring-violet-500 focus:ring-offset-2 focus:ring-offset-gray-900 transition duration-150 mt-2">
+                        S'inscrire
+                    </button>
+                </form>
+
+                <div class="mt-6 text-center">
+                    <p class="text-gray-400">Déjà un compte?
+                        <a href="connexion.php" class="text-violet-400 hover:text-violet-300 font-medium">Se connecter</a>
+                    </p>
                 </div>
+            <?php endif; ?>
+        </div>
+    </div>
+</div>
 
-                <div class="form-group">
-                    <label for="password">Mot de passe*</label>
-                    <input type="password" id="password" name="password" required>
-                    <small>Au moins 6 caractères</small>
-                </div>
-
-                <div class="form-group">
-                    <label for="confirm_password">Confirmer le mot de passe*</label>
-                    <input type="password" id="confirm_password" name="confirm_password" required>
-                </div>
-
-                <button type="submit" class="btn">S'inscrire</button>
-            </form>
-
-            <p class="login-link">Déjà un compte ? <a href="login.php">Se connecter</a></p>
-        <?php endif; ?>
-    </section>
-</main>
-</body>
-<footer>
-    <p>2025 - Supinstream</p>
+<footer class="bg-gray-900 text-center py-4 text-gray-400">
+    <p>&copy; 2025 Supinstream. Tous droits réservés.</p>
 </footer>
+</body>
 </html>

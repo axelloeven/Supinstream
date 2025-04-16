@@ -28,9 +28,8 @@ try {
     $error = "Erreur: " . $e->getMessage();
 }
 ?>
-
-    <!DOCTYPE html>
-    <html lang="fr">
+<!DOCTYPE html>
+<html lang="fr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -39,63 +38,72 @@ try {
     <link rel="stylesheet" href="style.css">
     <script src="src/script.js" defer></script>
 </head>
-
+<body class="bg-black text-white flex flex-col min-h-screen">
 <?php require_once('header.php'); ?>
 
-<body>
-<main class="container">
-    <div class="account-container">
-        <div class="account-sidebar">
-            <h2>Mon Compte</h2>
-            <div class="user-info">
-                <p><strong>Nom d'utilisateur:</strong> <?= htmlspecialchars($user['username'] ?? '') ?></p>
-                <p><strong>Email:</strong> <?= htmlspecialchars($user['email'] ?? '') ?></p>
-                <?php if (!empty($user['firstname']) || !empty($user['lastname'])): ?>
-                    <p><strong>Nom:</strong> <?= htmlspecialchars($user['firstname'] ?? '') ?> <?= htmlspecialchars($user['lastname'] ?? '') ?></p>
-                <?php endif; ?>
-            </div>
-
-            <div class="account-menu">
-                <ul>
-                    <li class="active"><a href="#films">Mes Films</a></li>
-                    <li><a href="logout.php">Déconnexion</a></li>
-                </ul>
-            </div>
+<main class="flex-grow container mx-auto px-4 py-8">
+    <div class="bg-gray-900 rounded-lg shadow-xl overflow-hidden">
+        <div class="bg-violet-600 py-4">
+            <h1 class="text-2xl font-bold text-center text-white">Mon Compte</h1>
         </div>
 
-        <div class="account-content">
-            <section id="films" class="user-movies">
-                <h2>Mes Films</h2>
+        <div class="md:flex">
+            <!-- Sidebar -->
+            <div class="md:w-1/4 bg-gray-800 p-6">
+                <div class="user-info mb-6">
+                    <p class="mb-2"><span class="font-bold text-violet-300">Nom d'utilisateur:</span> <?= htmlspecialchars($user['username'] ?? '') ?></p>
+                    <p class="mb-2"><span class="font-bold text-violet-300">Email:</span> <?= htmlspecialchars($user['email'] ?? '') ?></p>
+                    <?php if (!empty($user['firstname']) || !empty($user['lastname'])): ?>
+                        <p><span class="font-bold text-violet-300">Nom:</span> <?= htmlspecialchars($user['firstname'] ?? '') ?> <?= htmlspecialchars($user['lastname'] ?? '') ?></p>
+                    <?php endif; ?>
+                </div>
 
-                <?php if (empty($userMovies)): ?>
-                    <div class="no-movies">
-                        <p>Vous n'avez pas encore de films dans votre bibliothèque.</p>
-                        <a href="movies.php" class="btn">Parcourir les films</a>
-                    </div>
-                <?php else: ?>
-                    <div class="movies-grid">
-                        <?php foreach ($userMovies as $movie): ?>
-                            <div class="movie-card">
-                                <a href="infomovie.php?id=<?= htmlspecialchars($movie['movie_id']) ?>">
-                                    <img src="<?= htmlspecialchars($movie['image_path']) ?>" alt="<?= htmlspecialchars($movie['title']) ?>">
-                                    <div class="movie-info">
-                                        <h3><?= htmlspecialchars($movie['title']) ?></h3>
-                                        <p class="movie-year"><?= htmlspecialchars($movie['release_year']) ?></p>
-                                        <p class="movie-genre"><?= htmlspecialchars($movie['genre']) ?></p>
-                                    </div>
-                                </a>
-                                <a href="play.php?id=<?= htmlspecialchars($movie['movie_id']) ?>" class="play-btn">Regarder</a>
-                            </div>
-                        <?php endforeach; ?>
-                    </div>
-                <?php endif; ?>
-            </section>
+                <div class="account-menu">
+                    <ul class="space-y-2">
+                        <li class="bg-violet-500 text-white rounded-md">
+                            <a href="#films" class="block px-4 py-2 hover:bg-violet-600 rounded-md transition duration-150">Mes Films</a>
+                        </li>
+                        <li>
+                            <a href="logout.php" class="block px-4 py-2 text-white hover:bg-gray-700 rounded-md transition duration-150">Déconnexion</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Main Content -->
+            <div class="md:w-3/4 p-6">
+                <section id="films" class="user-movies">
+                    <h2 class="text-xl font-bold mb-6 text-violet-400">Mes Films</h2>
+
+                    <?php if (empty($userMovies)): ?>
+                        <div class="text-center py-8 bg-gray-800 rounded-lg">
+                            <p class="text-gray-400 mb-4">Vous n'avez pas encore de films dans votre bibliothèque.</p>
+                            <a href="movies.php" class="bg-violet-500 text-white py-2 px-6 rounded-md hover:bg-violet-600 transition duration-150 inline-block">Parcourir les films</a>
+                        </div>
+                    <?php else: ?>
+                        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                            <?php foreach ($userMovies as $movie): ?>
+                                <div class="bg-gray-800 rounded-lg overflow-hidden shadow-lg">
+                                    <a href="infomovie.php?id=<?= htmlspecialchars($movie['movie_id']) ?>">
+                                        <img src="<?= htmlspecialchars($movie['image_path']) ?>" alt="<?= htmlspecialchars($movie['title']) ?>" class="w-full h-110 object-cover">
+                                        <div class="p-4">
+                                            <h3 class="font-medium text-lg mb-1"><?= htmlspecialchars($movie['title']) ?></h3>
+                                            <p class="text-gray-400 text-sm"><?= htmlspecialchars($movie['release_year']) ?></p>
+                                            <p class="text-violet-300 text-sm mb-4"><?= htmlspecialchars($movie['genre']) ?></p>
+                                        </div>
+                                    </a>
+                                </div>
+                            <?php endforeach; ?>
+                        </div>
+                    <?php endif; ?>
+                </section>
+            </div>
         </div>
     </div>
 </main>
-</body>
 
-<footer>
-    <p>2025 - Supinstream</p>
+<footer class="bg-gray-900 text-center py-4 text-gray-400 mt-auto">
+    <p>&copy; 2025 - Supinstream</p>
 </footer>
-    </html>
+</body>
+</html>
