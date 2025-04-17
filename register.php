@@ -39,10 +39,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 if ($stmt->fetchColumn() > 0) {
                     $error = 'Cet email ou nom d\'utilisateur existe déjà';
                 } else {
-                    // Hasher le mot de passe
                     $hashed_password = password_hash($password, PASSWORD_DEFAULT);
 
-                    // Insérer le nouvel utilisateur
                     $query = "INSERT INTO USER (username, email, password, firstname, lastname) 
                               VALUES (:username, :email, :password, :firstname, :lastname)";
                     $stmt = $conn->prepare($query);

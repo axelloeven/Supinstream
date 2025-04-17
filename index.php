@@ -47,7 +47,6 @@ $movies = getMoviesFromDatabase($conn, 5);
                 </div>
             </div>
 
-            <!-- Film 2 -->
             <div class="w-1/4 px-2 mb-8">
                 <div class="group relative">
                     <a href="infomovie.php?id=<?php echo htmlspecialchars($movies[2]['movie_id']); ?>">

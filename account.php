@@ -65,6 +65,9 @@ try {
                         <li>
                             <a href="logout.php" class="block px-4 py-2 text-white hover:bg-gray-700 rounded-md transition duration-150">Déconnexion</a>
                         </li>
+                        <li>
+                            <a href="changepassword.php" class="block px-4 py-2 text-white hover:bg-gray-700 rounded-md transition duration-150">Changez votre mot de passe</a>
+                        </li>
                     </ul>
                 </div>
             </div>
