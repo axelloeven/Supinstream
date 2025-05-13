@@ -8,32 +8,33 @@ Notre plateforme permet aux utilisateurs de:
 
 - Parcourir un catalogue de films
 - Rechercher des films par titre ou réalisateur
-- Consulter les détails des films (acteurs, réalisateurs, synopsis)
+- Consulter les détails des films (acteurs, réalisateurs)
 - Ajouter des films à un panier d'achat
 - Créer un compte et gérer leur profil
 - Consulter l'historique de leurs achats
+- Changer leur mot de passe
 
 ## 🚀 Fonctionnalités
 
-### Page d'Accueil
+### Page d'Accueil (`index.php`)
 
 - Textes de présentation
-- Affichage des derniers films ajoutés (titre, prix, bouton d'ajout au panier)
+- Affichage des films avec titre, prix, bouton d'ajout au panier
 - Barre de recherche pour trouver des films par titre ou réalisateur
 
-### Système de Recherche
+### Système de Recherche (`search.php`)
 
-- Accessible depuis toutes les pages
+- Accessible depuis l'en-tête
 - Recherche par titre ou réalisateur
 - Affichage des résultats de manière claire et organisée
 
-### Pages de Catégories
+### Pages de Catégories (`categories.php`)
 
-- Au moins deux catégories: Action et Drame
-- Chaque catégorie contient une dizaine de films
+- Catégories de films disponibles
+- Chaque catégorie affiche les films correspondants
 - Navigation intuitive entre les catégories
 
-### Page de Détails du Film
+### Page de Détails du Film (`infomovie.php`)
 
 - Image du film
 - Titre
@@ -42,29 +43,29 @@ Notre plateforme permet aux utilisateurs de:
 - Prix
 - Bouton "Ajouter au panier"
 
-### Page Panier
+### Page Panier (`cart.php`)
 
 - Liste des films ajoutés
 - Bouton de suppression (pour un film spécifique ou vider le panier)
 - Montant total
 - Panier persistant entre les sessions
-- Accessible uniquement pour les utilisateurs connectés
+- Fonction de passage à la caisse (`checkout.php`)
 
 ### Pages d'Authentification
 
-- Inscription
-- Connexion
-- Gestion des sessions
+- Inscription (`register.php`)
+- Connexion (`connexion.php`)
+- Déconnexion (`logout.php`)
 
-### Page Profil
+### Page Profil (`account.php`)
 
 - Liste des films achetés
-- Formulaire de changement de mot de passe
+- Fonction de changement de mot de passe (`changepassword.php`)
 - Bouton de déconnexion
 
 ## 💻 Technologies Utilisées
 
-- **Frontend**: HTML5, CSS3, JavaScript
+- **Frontend**: HTML5, CSS3
 - **Backend**: PHP 8.0+
 - **Base de données**: MySQL
 - **Responsive Design**: Adaptation à tous les types d'appareils
@@ -74,46 +75,53 @@ Notre plateforme permet aux utilisateurs de:
 1. Clonez ce dépôt
 
    ```bash
-   git clone https://github.com/votre-utilisateur/imdb-project.git
-   cd imdb-project
+   git clone https://github.com/votre-utilisateur/PHP.git
+   cd PHP
    ```
 
-2. Configurez votre serveur web (Apache/Nginx) pour pointer vers le dossier du projet
+2. Configurez votre serveur web (Apache/XAMPP) pour pointer vers le dossier du projet
 
-3. Importez la base de données
+3. Importez la base de données depuis le fichier SQL fourni
 
-   ```bash
-   mysql -u username -p database_name < database/schema.sql
-   ```
-
-4. Configurez les paramètres de connexion à la base de données dans `config/database.php`
+4. Configurez les paramètres de connexion à la base de données dans `config/config.php`
 
 ## 📁 Structure du Projet
 
 ```
-├── assets/           # Ressources statiques (CSS, JS, images)
 ├── config/           # Fichiers de configuration
-├── database/         # Scripts SQL et schéma de base de données
-├── includes/         # Classes et fonctions PHP réutilisables
-├── models/           # Modèles de données
-├── public/           # Point d'entrée de l'application
-├── templates/        # Templates HTML
+│   ├── config.php    # Configuration de la base de données
+│   ├── get_movies.php # Récupération des films
+│   └── import_movies.php # Import de films
+├── images/           # Images utilisées dans le projet
+├── src/              # Ressources CSS et JS
+├── *.php             # Fichiers PHP principaux (index, login, etc.)
 └── README.md         # Documentation du projet
 ```
 
-## 📋 Documentation
+## 🛒 Fonctionnalités du Panier
 
-Une documentation complète est disponible dans le dossier `docs/`, incluant:
+Le panier utilise les fichiers suivants:
 
-- Guide d'installation détaillé
-- Structure de la base de données
-- Guide d'utilisation
-- Aspects techniques
+- `addtocart.php` - Pour ajouter des films au panier
+- `cart.php` - Pour afficher et gérer le panier
+- `cartfunction.php` - Fonctions utilitaires pour le panier
+- `checkout.php` - Pour finaliser l'achat
+
+## 👤 Gestion des Utilisateurs
+
+La gestion des utilisateurs comprend:
+
+- `register.php` - Inscription des nouveaux utilisateurs
+- `connexion.php` - Connexion des utilisateurs existants
+- `user_fonction.php` - Fonctions liées aux utilisateurs
+- `account.php` - Gestion du profil utilisateur
+- `changepassword.php` - Modification du mot de passe
+- `logout.php` - Déconnexion
 
 ## 👥 Contributeurs
 
-- [Votre Nom](https://github.com/votre-utilisateur)
-- [Nom du Collaborateur](https://github.com/collaborateur)
+- [Votre Nom]
+- [Nom du Collaborateur]
 
 ## 📝 Licence
 
