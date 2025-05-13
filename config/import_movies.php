@@ -1,7 +1,7 @@
 <?php
 require_once 'config.php';
 
-$api_key = "f8dceef7";
+$api_key = "";
 
 $imdb_ids = [
     'tt30795948', // Un p'tit truc en plus
